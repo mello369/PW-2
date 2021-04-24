@@ -1,0 +1,41 @@
+.post{
+    padding-top: 1px;
+    max-width: 500px;
+    background-color: white;
+    border: 1px solid lightgray;
+    margin-bottom: 45px;
+    margin-top: 10px;
+    margin-left: 30px;
+    
+}
+
+.post :hover
+{
+    background-color: whitesmoke;
+}
+.post__image{
+    width : 100%;
+    object-fit: contain;
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+    /* height: 50vmin; */
+}
+.post__text
+{
+    font-weight: normal;
+    padding: 10px;
+}
+.post__text strong
+{
+    padding-right: 2px;
+}
+.post__header
+{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.post__avatar{
+    margin-right: 10px;
+}
