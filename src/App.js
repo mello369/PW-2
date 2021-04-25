@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import Post from './components/Post'
 import {useState} from 'react';
+import NavigavtionBar from './components/NavBar/NavBar'
+import Ask from './components/Ask/Ask'
 function App() {
   const [posts,setPosts]=useState([
     {
@@ -42,7 +44,9 @@ function App() {
         )
         
       }
-
+{/*   <NavigavtionBar sticky="top"/>
+      <Ask/>
+    */}   
        
     </div>
   );

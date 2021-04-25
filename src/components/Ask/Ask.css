@@ -1,0 +1,36 @@
+.box{
+    width: 50%;
+    margin: auto;
+    border-radius: 5px;
+    margin-top: 130px;
+    
+}
+#question{
+    width: 90%;
+    height: 50px;
+}
+.btn-primary{
+    background-color: teal!important;
+    border-color: teal!important;
+}
+textarea{
+    border-radius: 5px;
+}
+@media only screen and (max-width:992px){
+    .box{
+        width:70%;
+    }
+}
+#branch{
+    border-radius: 5px;
+}
+@media only screen and (max-width:768px){
+    .box{
+        width:80%;
+    }
+}
+@media only screen and (max-width:478px){
+    .box{
+        width:90%;
+    }
+}
