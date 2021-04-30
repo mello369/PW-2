@@ -1,9 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import Post from './components/Post'
+import Post from './components/Post';
 import {useState} from 'react';
-import NavigavtionBar from './components/NavBar/NavBar'
-import Ask from './components/Ask/Ask'
+import NavigavtionBar from './components/NavBar/NavBar';
+import Ask from './components/Ask/Ask';
+import Login from './components/Login/Login'
+import Profile from './components/Profile/Profile'
+import SignUp from './components/SignUp/SignUp';
+import ForgotPassword from './components/ForgotPassword/ForgotPassword'
 function App() {
   const [posts,setPosts]=useState([
     {
@@ -27,16 +31,16 @@ function App() {
   ]);
   return (
     <div className="app">
-      
+      {/*
       <div className="app__header">
       <img className ="app__headerImage" src={logo} alt=""/>
       <h3>Placement Experience</h3>
 
       </div>
       {
-        /*header*/
+        
       }
-      {/*Posts*/
+      {/
         posts.map(
             (post)=>
                 <Post imageUrl={post.imageUrl} username={post.username} text={post.text}  />
@@ -44,9 +48,15 @@ function App() {
         )
         
       }
-{/*   <NavigavtionBar sticky="top"/>
+  <NavigavtionBar sticky="top"/>
       <Ask/>
-    */}   
+    <Profile/>
+    <SignUp/>
+    <ForgotPassword/>
+   <Login/>
+    
+    */}
+     
        
     </div>
   );
