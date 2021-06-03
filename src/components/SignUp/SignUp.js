@@ -19,7 +19,7 @@ const yearList=year.map((year)=>
 function SignUp(){
 return(
     
-    <div className="Main-Container">
+    <div className="Main-Container-sp">
         <div className="row-form">
             <div className="form-container">
                 <div className='cntr'>

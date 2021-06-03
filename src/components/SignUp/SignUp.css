@@ -8,13 +8,14 @@
 }
 */
 
-h4{
+.Main-Container-sp h4{
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom:7px;
 }
-hr{
+.Main-Container-sp hr{
     width: 50%;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    margin: auto;
 }
 /*
 .row{
@@ -25,14 +26,14 @@ hr{
     margin-bottom: 25px;    
 }
 */
-.cntr{
+.Main-Container-sp .cntr{
     display: flex;
     width: 70%;
     margin: auto;
     justify-content: center;
     align-content: center;
-    margin-top: 25px!important;
-    margin-bottom: 25px!important;   
+    margin-top: 20px!important;
+    margin-bottom: 20px!important;   
 }
 /*
 .cntr-select{
@@ -41,17 +42,17 @@ hr{
     justify-content: center;
 }*/
 
-select{
+.Main-Container-sp select{
     border-radius: 5px;
     border-width: 2px;
     width:60%;
     border-color: teal;
 }
-select:focus{
+.Main-Container-sp select:focus{
     border-color: orange;
     outline: none;
 }
-input{
+.Main-Container-sp input{
     border-radius: 5px;
     border-top-width: 0;
     border-left-width: 0;
@@ -62,7 +63,7 @@ input{
     height: 35px;
 }
 
-input:focus {
+.Main-Container-sp input:focus {
     border-radius: 5px;
     border-top-width: 0!important;
     border-left-width: 0;
@@ -70,80 +71,80 @@ input:focus {
     border-color: orange;
     outline: none;
 }
-span{
+.Main-Container-sp span{
     color:black;
     font-size: 0.9em;
 }
-span:hover{
+.Main-Container-sp span:hover{
 cursor: pointer;
 color: orange;
 }
-button{
+.Main-Container-sp button{
     border-radius: 5px!important;
     border-width: 0;
     height: 35px!important;
-    width: 100%;
+    width: 100%!important;
 }
 
-#login{
+.Main-Container-sp #login{
 color:white;
 background-color: black;
 }
-#signup{
+.Main-Container-sp #signup{
 color: white;
 background-color:teal;
 }
-#login:focus{
+.Main-Container-sp #login:focus{
     background-color: orange;
 }
-#signup:focus{
+.Main-Container-sp #signup:focus{
     background-color: orange;
 }
 
 
 @media only screen and (min-width: 992px){
-    #logo{
+    .Main-Container-sp #logo{
         width: 0;
         height: 0;
         visibility: hidden;
         display: none;
     }
 
-    .Main-Container{
+    .Main-Container-sp{
         width: 900px;
         border-radius: 10px;
         border-top: black;
         margin: auto;
-        height: 550px;
+        height: 500px;
         justify-content: center;
         flex-direction: column;    
         box-shadow: 0 0 10px 1px rgb(0,0,0,0.5);
         margin-top: 5%;
     }
-    .row-form{
+    .Main-Container-sp .row-form{
         float: left;
         width: 50%;
         background-color: white;
-        height: 550px;
+        height: 500px;
         border-top-left-radius:5px;
         border-bottom-left-radius:5px;
     }
-    .row-img{
+    .Main-Container-sp .row-img{
         float: right;
         width: 50%;
         background-color: black;
-        height: 550px;
+        height: 500px;
         border-top-right-radius:5px;
         border-bottom-right-radius:5px;
         background-image: url('./logo.png');
         background-repeat: no-repeat;
         background-size: 100% 100%;
     }
-    .form-container{
+    .Main-Container-sp .form-container{
         width: 90%;
         margin: auto;
         height: 450px;        
-        margin-top:20px;
+        margin-top:0px;
         padding-top: 0px;
     }
 
@@ -154,7 +155,7 @@ background-color:teal;
 
 @media only screen and (max-width: 992px)
 {
-    .row{
+    .Main-Container-sp .row{
         align-content: center;
     }
 }

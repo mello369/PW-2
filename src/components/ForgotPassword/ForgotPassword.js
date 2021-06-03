@@ -2,7 +2,7 @@ import './ForgotPassword.css';
 function ForgotPassword()
 {
     return(
-        <div className='Containerr'>
+        <div className='fp-cont'>
             <h5>Forgot Password?</h5>
  
             <div className="roww">

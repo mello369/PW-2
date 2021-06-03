@@ -2,12 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import Post from './components/Post';
 import {useState} from 'react';
-import NavigavtionBar from './components/NavBar/NavBar';
+import NavBar from './components/NavBar/NavBar';
 import Ask from './components/Ask/Ask';
 import Login from './components/Login/Login'
-import Profile from './components/Profile/Profile'
+import Profile from './components/Profile/Profile';
 import SignUp from './components/SignUp/SignUp';
-import ForgotPassword from './components/ForgotPassword/ForgotPassword'
+import ForgotPassword from './components/ForgotPassword/ForgotPassword';
+import Branches from './components/Branches/Branches'
 function App() {
   const [posts,setPosts]=useState([
     {
@@ -48,16 +49,24 @@ function App() {
         )
         
       }
-  <NavigavtionBar sticky="top"/>
+
+     <NavBar sticky="top"/>
       <Ask/>
     <Profile/>
     <SignUp/>
     <ForgotPassword/>
    <Login/>
     
-    */}
-     
-       
+    */
+   <div>
+ 
+
+
+
+   </div>
+    }
+     <NavBar/>
+<Branches/>       
     </div>
   );
 }

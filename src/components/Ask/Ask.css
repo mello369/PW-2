@@ -3,25 +3,37 @@
     margin: auto;
     border-radius: 5px;
     margin-top: 130px;
+    box-shadow: 0 0 20px 1px rgb(0,0,0,0.3);
     
 }
-#question{
+.box #question{
     width: 90%;
-    height: 50px;
+    height: 100px;
 }
-.btn-primary{
+.box .btn-primary{
     background-color: teal!important;
-    border-color: teal!important;
+    /*border-color: teal!important;*/
+    border: none!important;
 }
-textarea{
+.box .btn{
+    border: none!important;
+}
+.box .btn:focus{
+    background-color: orange!important;
+    outline: none!important;
+    border: none!important;
+}
+
+.box textarea{
     border-radius: 5px;
+  
 }
 @media only screen and (max-width:992px){
     .box{
         width:70%;
     }
 }
-#branch{
+.box #branch{
     border-radius: 5px;
 }
 @media only screen and (max-width:768px){

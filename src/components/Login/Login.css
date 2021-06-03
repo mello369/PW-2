@@ -8,13 +8,14 @@
 }
 */
 
-h4{
+.Main-Container h4{
     text-align: center;
     margin-bottom: 10px;
 }
-hr{
+.Main-Container hr{
     width: 50%;
     margin-bottom: 20px;
+    margin: auto;
 }
 /*
 .row{
@@ -25,7 +26,7 @@ hr{
     margin-bottom: 25px;    
 }
 */
-.cntr{
+.Main-Container .cntr{
     display: flex;
     width: 70%;
     margin: auto;
@@ -34,7 +35,7 @@ hr{
     margin-top: 25px!important;
     margin-bottom: 25px!important;   
 }
-input{
+.Main-Container input{
     border-radius: 5px;
     border-top-width: 0;
     border-left-width: 0;
@@ -45,7 +46,7 @@ input{
     height: 35px;
 }
 
-input:focus {
+.Main-Container input:focus {
     border-radius: 5px;
     border-top-width: 0!important;
     border-left-width: 0;
@@ -53,38 +54,38 @@ input:focus {
     border-color: orange;
     outline: none;
 }
-span{
+.Main-Container span{
     color:black;
     font-size: 0.9em;
 }
-span:hover{
+.Main-Container span:hover{
 cursor: pointer;
 color: orange;
 }
-button{
+.Main-Container button{
     border-radius: 5px!important;
     border-width: 0;
     height: 35px!important;
-    width: 100%;
+    width: 100%!important;
 }
-#login{
+.Main-Container #login{
 color:white;
 background-color: black;
 }
-#signup{
+.Main-Container #signup{
 color: white;
 background-color:teal;
 }
-#login:focus{
+.Main-Container #login:focus{
     background-color: orange;
 }
-#signup:focus{
+.Main-Container #signup:focus{
     background-color: orange;
 }
 
 
 @media only screen and (min-width: 992px){
-    #logo{
+    .Main-Container #logo{
         width: 0;
         height: 0;
         visibility: hidden;
@@ -102,7 +103,7 @@ background-color:teal;
         box-shadow: 0 0 10px 1px rgb(0,0,0,0.5);
         margin-top: 5%;
     }
-    .row-form{
+    .Main-Container .row-form{
         float: left;
         width: 50%;
         background-color: white;
@@ -110,7 +111,7 @@ background-color:teal;
         border-top-left-radius:5px;
         border-bottom-left-radius:5px;
     }
-    .row-img{
+    .Main-Container .row-img{
         float: right;
         width: 50%;
         background-color: black;
@@ -121,7 +122,7 @@ background-color:teal;
         background-repeat: no-repeat;
         background-size: 100% 100%;
     }
-    .form-container{
+    .Main-Container .form-container{
         width: 90%;
         margin: auto;
         height: 450px;        
@@ -136,7 +137,7 @@ background-color:teal;
 
 @media only screen and (max-width: 992px)
 {
-    .row{
+    .Main-Container .row{
         align-content: center;
     }
 }

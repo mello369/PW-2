@@ -2,6 +2,7 @@ import './Profile.css';
 function Profile()
 {
     return(
+        <div className="profile">
         <div className="container">
             <button id="edit-button">Edit</button>
             <h3>Profile</h3>
@@ -30,6 +31,7 @@ function Profile()
             <div className="post"></div>
             <div className="post"></div>
 
+        </div>
         </div>
     )
 }

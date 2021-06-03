@@ -1,0 +1,87 @@
+.branches{
+    width: 70%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 1px rgb(0,0,0,0.15);
+    margin: auto;
+    margin-top: 120px;
+    padding: 20px 30px 20px 30px;
+}
+.branches h3{
+    text-align: center;
+}
+.branches hr{
+    margin: auto;
+    width: 50%;
+    margin-bottom: 10px;
+}
+.branches .row{
+    width: 100%;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin: auto;
+    padding: 20px;
+}
+.branches button{
+    
+    padding: 10px;
+    width: 70%;
+    display: block;
+    margin: auto;
+    border-radius: 7px;
+    border: none;
+    background-color: black;
+    color: white;
+    box-shadow: 0 0 5px 1px gray;
+}
+.branches button:hover{
+    
+    background-color: teal;
+    transform:scale(1.12,1.12);
+    transition-duration: 0.3s;
+   
+}
+.branches button:focus{
+    background-color: teal;
+    transform:scale(1.12,1.12);
+    transition-duration: 0s;
+}
+.branches .bt-cont{
+    width: 33.33%;
+    justify-content: center;
+
+}
+@media screen and (max-width:670px)
+{
+    .branches{
+        width: 80%;
+    }
+    .branches button{
+        width: 90%;
+    }
+    .branches .row{
+        padding: 20px 3px 20px 3px;
+    }
+}
+@media screen and (max-width:410px)
+{
+    .branches{
+        width: 95%;
+        padding: 2px 2px 2px 2px;
+    }
+    .branches .row{
+        padding: 0px 3px 0px 3px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .branches .bt-cont{
+        width: 70%;
+        margin: auto;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .branches button{
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+}
