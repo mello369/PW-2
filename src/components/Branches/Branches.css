@@ -38,7 +38,7 @@
     
     background-color: teal;
     transform:scale(1.12,1.12);
-    transition-duration: 0.3s;
+    transition-duration: 0.5s;
    
 }
 .branches button:focus{
