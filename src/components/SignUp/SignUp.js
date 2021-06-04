@@ -26,7 +26,7 @@ return(
             <img src={logo} id="logo"></img>
             </div>
             
-            <h4>Sign In</h4>
+            <h4>Sign Up</h4>
             <hr></hr>
             <form>
             <div className='cntr'>
@@ -47,7 +47,7 @@ return(
                 </select>
             </div>
             <div className="cntr">
-                <select name='branch' id='branch' required>
+                <select name='grad_year' id='year' required>
                     <option value='NONE'>Graduation Year</option>
                     {yearList}
                 </select>
@@ -57,7 +57,7 @@ return(
             </div>
             </form>
             <div className="cntr">
-                <button  id="signup">Have an account? Login</button>
+                <a href="/login"><button  id="signup">Have an account? Login</button></a>
             </div>
         </div>         
     </div>

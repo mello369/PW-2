@@ -24,7 +24,7 @@ return(
                 <button  id="login">Login</button>
                 </div>
                 <div className="cntr">
-                <button  id="signup">SignUp</button>
+                <a href="/signup"><button  id="signup" href="/signup">SignUp</button></a>
                 </div>
             </div>         
         </div>

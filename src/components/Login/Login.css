@@ -82,7 +82,9 @@ background-color:teal;
 .Main-Container #signup:focus{
     background-color: orange;
 }
-
+.Main-Container a{
+    width: 100%;
+}
 
 @media only screen and (min-width: 992px){
     .Main-Container #logo{

@@ -4,7 +4,7 @@ function Profile()
     return(
         <div className="profile">
         <div className="container">
-            <button id="edit-button">Edit</button>
+            <a href="/EditProfile"><button id="edit-button">Edit</button></a>
             <h3>Profile</h3>
             
             <div className="profile-data">

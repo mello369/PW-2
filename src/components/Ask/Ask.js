@@ -1,6 +1,10 @@
 import React from 'react';
 import './Ask.css';
 import {Card,Button} from 'react-bootstrap';
+const branch=['CSE','ISE','ECE','ME','BT','AE','CVL'];
+const branchList=branch.map((branch)=>
+<option value={branch}>{branch}</option>
+)
 function Ask()
 {
 return(
@@ -15,9 +19,7 @@ return(
     <br></br>
     <label htmlFor='branch'>Branch</label><br></br>
     <select name='branch' id='branch'>
-        <option value='NONE'>NONE</option>
-        <option value='CSE'>CSE</option>
-        <option value='ECE'>ECE</option>
+          {branchList}
     </select>
  
     

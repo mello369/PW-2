@@ -100,7 +100,9 @@ background-color:teal;
 .Main-Container-sp #signup:focus{
     background-color: orange;
 }
-
+.Main-Container-sp a{
+    width: 100%;
+}
 
 @media only screen and (min-width: 992px){
     .Main-Container-sp #logo{
@@ -119,7 +121,7 @@ background-color:teal;
         justify-content: center;
         flex-direction: column;    
         box-shadow: 0 0 10px 1px rgb(0,0,0,0.5);
-        margin-top: 5%;
+        margin-top: 7%;
     }
     .Main-Container-sp .row-form{
         float: left;
