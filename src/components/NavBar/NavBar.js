@@ -2,6 +2,8 @@ import React from 'react';
 import './NavBar.css';
 import {Nav,Form,Button,Navbar,FormControl,Container} from 'react-bootstrap';
 import logo from './logo.jpg';
+
+import {Link} from 'react-router-dom';
 function NavigavtionBar()
 {
 

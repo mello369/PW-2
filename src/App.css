@@ -2,20 +2,5 @@
   margin: 0;
 }
 
-.app{
-  background-color: #fafafa;
-  height: 100vh;
-}
 
-.app__header{
-  background-color: white;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid lightgray;
-}
 
-.app__headerImage{
-  object-fit: contain;
-  height: 8vmin;
-}
