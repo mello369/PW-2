@@ -1,7 +1,7 @@
 
 import './App.css';
 
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Ask from './components/Ask/Ask';
 import Login from './components/Login/Login'

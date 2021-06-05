@@ -4,7 +4,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {MoreVert} from '@material-ui/icons';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
-export default function Post() {
+export default function Post({name,date,image,text,company}) {
     return (
         <div className="post">
             <div className="postWrapper">
@@ -12,8 +12,8 @@ export default function Post() {
             <div className="postTop">
                 <div className="postTopLeft">
                 <AccountCircleIcon style={{fontSize:50}}className="postProfileImage"/>
-                <span className="postUsername">Naman</span>
-                <span className="postDate">5 mins ago</span>
+                <span className="postUsername">{name}</span>
+                <span className="postDate">{date}</span>
                 </div>
                 <div className="postTopRight">
 
@@ -23,14 +23,11 @@ export default function Post() {
             </div>
 
             <div className="postCenter">
-                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                <img src={image} 
                 alt="" className="postImage"/>
                 
                 <div className="postContent">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque magni quisquam maxime! Veritatis blanditiis ipsam, in dolores adipisci aperiam modi totam molestias reiciendis error earum nesciunt asperiores minima quis tempora!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque magni quisquam maxime! Veritatis blanditiis ipsam, in dolores adipisci aperiam modi totam molestias reiciendis error earum nesciunt asperiores minima quis tempora!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque magni quisquam maxime! Veritatis blanditiis ipsam, in dolores adipisci aperiam modi totam molestias reiciendis error earum nesciunt asperiores minima quis tempora!
-                    
+                   {text}
                 </div>
             
             

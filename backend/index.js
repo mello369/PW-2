@@ -1,7 +1,28 @@
 const express = require('express');
 const app = express();
 const mysql = require('mysql');
+const axios = require('axios');
 app.use(express.json());
+
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
+
 const db = mysql.createPool({
     host:'remotemysql.com',
     user:'ydTQLJ2QTo',
@@ -12,7 +33,7 @@ const db = mysql.createPool({
 app.get('/',(req,res)=>{
     
     
-    res.send('hello world');
+    res.send('hello worl');
     //});
 })
 app.post('/login',(req,res)=>{
@@ -64,6 +85,78 @@ app.post('/signup',(req,res)=>{
 })
 app.post('./uploadPost',(req,res)=>{
     
+})
+
+app.get('/getUser/:id',(req,res)=>{
+    const id = req.params.id;
+    var query1 = 'select name from user where user_id = (?)'; 
+    db.query(query1,[id],(err,result)=>{
+        if(err==null&&result.length!=0)
+        {
+            res.send(result[0]["name"]);
+        }
+        else
+        {
+            res.send({"msg":"error"});
+        }
+
+    })
+
+})
+
+app.get('/getPosts',(req,res)=>{
+    let i=0;
+    const query = 'select * from post';
+    let posts=[];
+    db.query(query,[],async (err,result)=>{
+        if(err==null)
+        {
+            
+        //   await result.map(element => {
+        //         var query1 = 'select name from user where user_id = (?)'; 
+        //        db.query(query1,[element["user_id"]],(err1,result1)=>{
+                    
+        //             element["name"]=result1[0]["name"];
+                    
+        //             posts.push(element);
+        //             console.log(posts)
+        //             return element;
+        //                     //result[i]["name"]=(result1[0]["name"]);
+        //             })
+        //     });
+            for(i of result)
+            {
+               await axios.get('http://localhost:3001/getUser/'+i["user_id"])
+                .then(response => {
+                             i["name"]=response.data;
+                             posts.push(i);
+                             console.log(response.data)
+                             })
+                    .catch(error => {
+                      console.log(error);
+                  });
+            }
+            console.log(posts);
+            // for(i=0;i<result.length;i++)
+            // {
+            //     var query1 = 'select name from user where user_id = (?)'; 
+            //     db.query(query1,[result[i]["user_id"]],(err1,result1)=>{
+            //     console.log(result[i]);
+            //             //result[i]["name"]=(result1[0]["name"]);
+                    
+            //     })
+            // }
+            res.status=200;
+            res.header
+            res.send({posts});
+        
+        }
+        else
+        {
+            res.send({"msg":"failed"});
+        }
+        
+    })
 })
 
 app.listen(3001,(err) =>{
