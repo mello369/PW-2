@@ -2,6 +2,8 @@ import React from 'react';
 import './NavBar.css';
 import {Nav,Button,Navbar,Container} from 'react-bootstrap';
 import logo from './logo.jpg';
+
+import {Link} from 'react-router-dom';
 function NavigavtionBar()
 {
 
@@ -16,9 +18,9 @@ function NavigavtionBar()
     <Nav className="mr-auto">
       
       <Nav.Link href="/" className='buttons'>Home</Nav.Link>
-      <Nav.Link href="/"className='buttons'>Branches</Nav.Link>
+      <Nav.Link href="/branches"className='buttons'>Branches</Nav.Link>
       <Nav.Link href="/ask"className='buttons'>Ask</Nav.Link>
-      <Nav.Link href="/addpost"className='buttons'>Add Post</Nav.Link>
+     {/* <Nav.Link href="/addpost"className='buttons'>Add Post</Nav.Link>*/}
     <Nav.Link href="/profile"className='buttons'>Profile</Nav.Link>
     <Nav.Link href="/login"className='buttons'>Logout</Nav.Link>
     </Nav>

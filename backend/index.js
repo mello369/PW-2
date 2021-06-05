@@ -66,7 +66,7 @@ app.post('./uploadPost',(req,res)=>{
     
 })
 
-app.listen(3001,() =>{
-console.log("server started")
+app.listen(3001,(err) =>{
+    
 
 });
