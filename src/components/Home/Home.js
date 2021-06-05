@@ -8,7 +8,7 @@ import NavigavtionBar from '../NavBar/NavBar';
 function Home() {
 
     const [Posts,setPosts] = useState([]);
-
+    
     useEffect(()=>{//Will be called as soon as the page renders.
         const getPosts = async () => {
           const PostsfromServer = await fetchPosts()
