@@ -3,7 +3,17 @@ import "./share.css";
 import {PermMedia} from "@material-ui/icons"
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import {useState,useEffect} from 'react';
+import ShareForm from './shareForm/shareForm';
 export default function Share() {
+    const [expanded,setExpanded] = useState(false);
+    
+    const toggleExpanded = ()=>
+    {
+      setExpanded(!expanded)
+    }
+
+
     return (
         <div className="share">
             <div className="shareWrapper">
@@ -21,8 +31,19 @@ export default function Share() {
                 <span></span>
             </div>
             
-            <ExpandMoreIcon className="shareExpand"/>
+            {
             
+                expanded?
+                <ShareForm />
+
+            :<></>
+
+            }
+
+            {
+                !expanded?<ExpandMoreIcon onClick={()=>{toggleExpanded()}}className="shareExpand"/>
+                : <ExpandLessIcon onClick={()=>{toggleExpanded()}} className="shareExpand"/>
+}
             </div>
             </div>
         </div>
