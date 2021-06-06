@@ -1,11 +1,5 @@
-
 import './App.css';
-<<<<<<< HEAD
-import {useState} from 'react';
-=======
-
 import {useState,useEffect} from 'react';
->>>>>>> 7ebf7e7b5b1432ada302e97d96c8215052020cf4
 import NavBar from './components/NavBar/NavBar';
 import Ask from './components/Ask/Ask';
 import Login from './components/Login/Login'
@@ -41,9 +35,6 @@ function App() {
 
   return (
     <div className="app">
-    
-
-
     <NavBar/> 
     <Route exact path="/" component={Home}/>
     <Route exact path="/branches" component={Branches}/>
@@ -51,6 +42,7 @@ function App() {
     <Route  exact path="/signup" component={SignUp}/>
     <Route exact path="/ask" component={Ask}/>
     <Route exact path="/profile" component={Profile}/>
+    <Route exact path="/addpost" component={AddPost}/>
     <Route exact path="/EditProfile" component={EditProfile}/>
     </div>
   );
