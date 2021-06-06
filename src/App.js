@@ -1,6 +1,11 @@
 
 import './App.css';
+<<<<<<< HEAD
 import {useState} from 'react';
+=======
+
+import {useState,useEffect} from 'react';
+>>>>>>> 7ebf7e7b5b1432ada302e97d96c8215052020cf4
 import NavBar from './components/NavBar/NavBar';
 import Ask from './components/Ask/Ask';
 import Login from './components/Login/Login'
