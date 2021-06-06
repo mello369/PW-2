@@ -159,6 +159,42 @@ app.get('/getPosts',(req,res)=>{
     })
 })
 
+/********************************************************************/
+//POST: 
+app.post("/post/post-submit", (req, res) => {
+	let data = { company: req.body.company, image_content: req.body.image_content,text_content:req.body.text_content,user_id:req.body.user_id,date_time:req.body.date_time};
+	let sql = "INSERT INTO post SET ?";
+	let query = db.query(sql, data, (err, result) => {
+		if (err) throw err;
+		res.send(JSON.stringify({ status: 200, error: null, response: "Post added successfully" }));
+	});
+});
+
+//ASK QUESTION:
+app.post("/ask/ask-submit",(req,res)=>{
+    let data={question:req.body.question,user_id:req.body.user_id};
+    let sql="INSERT INTO question SET ?";
+    let query=db.query(sql,data,(err,result)=>{
+        if(err) throw err;
+        res.send(JSON.stringify({status:200,error:null,response:"Question added successfully"}));
+    })
+})
+
+//ANSWER:
+app.post("/answer/answer-submit",(req,res)=>{
+    let data={answer:req.body.answer,question_id:req.body.question_id,user_id:req.body.user_id};
+    let sql="INSERT INTO answer SET ?";
+    let query=db.query(sql,data,(err,result)=>{
+        if(err) throw err;
+        res.send(JSON.stringify({status:200,error:null,response:"Answer added successfully"}));
+    })
+})
+
+
+
+
+
+
 app.listen(3001,(err) =>{
     
 

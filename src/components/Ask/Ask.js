@@ -9,7 +9,7 @@ const branchList=branch.map((branch)=>
 )
 function Ask()
 {
-  const url="http://localhost:3306/ask/ask-submit";
+  const url="http://localhost:3001/ask/ask-submit";
   const [data,setData]=useState({
     user_id:8,
     question:""
@@ -31,6 +31,7 @@ function Ask()
       question:data.question
     }).then(res=>{
       console.log(res.data);
+      alert("Submitted Sucessfully!")
     })
   }
   catch(e)
