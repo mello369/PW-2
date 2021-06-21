@@ -3,7 +3,7 @@ import './shareForm.css'
 import Axios from 'axios';
 import {useState,useEffect} from 'react';
 export default function ShareForm() {
-
+//
     const url="http://localhost:3001/uploadPost";
     const [data,setData]=useState({
       user_id:8,
