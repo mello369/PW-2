@@ -3,7 +3,10 @@ const app = express();
 const mysql = require('mysql');
 const axios = require('axios');
 app.use(express.json());
-
+////
+var cors = require('cors')
+app.use(cors()) // Use this after the variable declaration
+////
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -83,9 +86,11 @@ app.post('/signup',(req,res)=>{
         }
     })
 })
+/*
 app.post('./uploadPost',(req,res)=>{
     
 })
+*/
 
 app.get('/getUser/:id',(req,res)=>{
     const id = req.params.id;
@@ -161,7 +166,7 @@ app.get('/getPosts',(req,res)=>{
 
 /********************************************************************/
 //POST: 
-app.post("/post/post-submit", (req, res) => {
+app.post("/uploadPost", (req, res) => {
 	let data = { company: req.body.company, image_content: req.body.image_content,text_content:req.body.text_content,user_id:req.body.user_id,date_time:req.body.date_time};
 	let sql = "INSERT INTO post SET ?";
 	let query = db.query(sql, data, (err, result) => {
@@ -196,6 +201,5 @@ app.post("/answer/answer-submit",(req,res)=>{
 
 
 app.listen(3001,(err) =>{
-    
-
+    console.log('Server started at port 3001')
 });
