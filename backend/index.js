@@ -254,6 +254,16 @@ app.post('/profile-edit/:id',(req,res)=>{
     })
 })
 
+//DELETE POST:
+
+app.post('/delete-post/:post_id',(req,res)=>{
+    const sql="delete from post where post_id="+req.params.post_id;
+    let query=db.query(sql,(err,result)=>{
+        if(err) throw err;
+        res.send(JSON.stringify({status:200,error:null,response:"Post deleted successfully"}));
+    })
+})
+
 
 
 
