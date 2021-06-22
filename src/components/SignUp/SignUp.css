@@ -160,6 +160,12 @@ background-color:teal;
     .Main-Container-sp .row{
         align-content: center;
     }
+    .Main-Container-sp #logo{
+        width: 45%;
+    }
+    .Main-Container-sp{
+        margin-top: 80px;
+    }
 }
 
 

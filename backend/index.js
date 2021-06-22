@@ -111,7 +111,7 @@ app.get('/getUser/:id',(req,res)=>{
 
 app.get('/getPosts',(req,res)=>{
     let i=0;
-    const query = 'select * from post';
+    const query = 'select * from post order by date_time desc';
     let posts=[];
     db.query(query,[],async (err,result)=>{
         if(err==null)
@@ -241,6 +241,38 @@ app.get('/profile/:id',(req,res)=>{
         }
     })
 })
+
+//EDIT PROFILE:
+//NOTE : CANT UPDATE EMAIL HERE AS IT IS FOREIGN KEY OF USER=>FIX 
+app.post('/profile-edit/:id',(req,res)=>{
+    const sql='Update user set name=\"'+req.body.name+"\",grad_year=\""+req.body.grad_year+"\",user.description=\""+req.body.description+"\",company=\""+req.body.company+"\" where user_id="+req.params.id;
+    console.log(sql)
+    let query=db.query(sql,(err,result)=>{
+        if(err) throw err;
+        else
+        res.send(JSON.stringify({status:200,error:null,response:"Profile updated successfully"}));
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 app.listen(3001,(err) =>{

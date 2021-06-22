@@ -100,3 +100,6 @@
     margin-left: 2.5%;
     margin-right: 2.5%;
 }
+.NavBarMain a.buttons.nav-link:hover{
+color: white;
+}

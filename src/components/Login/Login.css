@@ -142,6 +142,12 @@ background-color:teal;
     .Main-Container .row{
         align-content: center;
     }
+    .Main-Container #logo{
+        width: 45%;
+    }
+    .Main-Container{
+        margin-top: 80px;
+    }
 }
 
 
