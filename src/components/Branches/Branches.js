@@ -24,7 +24,7 @@ function Branches(){
             <div className="row">
             <div className="bt-cont"><button>ETE</button></div>
             <div className="bt-cont"><button>IE</button></div>
-            <div className="bt-cont"><button>ME</button></div>
+            <div className="bt-cont"><button>MDE</button></div>
             </div>
         </div>
     )

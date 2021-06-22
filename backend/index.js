@@ -195,9 +195,52 @@ app.post("/answer/answer-submit",(req,res)=>{
     })
 })
 
+//Getting user post in profile:
 
+app.get('/getUserPosts/:id',(req,res)=>{
+    let i=0;
+    const query = 'select * from post where user_id='+req.params.id;
+    let posts=[];
+    db.query(query,async (err,result)=>{
+        if(err==null)
+        {
 
+            for(i of result)
+            {
+                posts.push(i);
 
+            }
+            console.log(posts);
+            res.status=200;
+            res.header
+            res.send({posts});
+        
+        }
+        else
+        {
+            res.send({"msg":"failed"});
+        }
+        
+    })
+})
+
+//getting profile data
+app.get('/profile/:id',(req,res)=>{
+    const query="select * from user where user_id="+req.params.id;
+
+    db.query(query,async(err,result)=>{
+        if(err==null)
+        {
+            res.status=200;
+            res.header
+            res.send(result)
+        }
+        else
+        {
+            res.send({"msg":"failed"})
+        }
+    })
+})
 
 
 app.listen(3001,(err) =>{

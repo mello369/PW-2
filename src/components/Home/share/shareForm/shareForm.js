@@ -9,7 +9,7 @@ export default function ShareForm() {
       user_id:8,
       company:"",
       image_content:"",
-      text_content:"",
+      text_content:""
     })
     function handle(e){
         const newData={...data};
@@ -24,24 +24,31 @@ export default function ShareForm() {
         const d=new Date()//to get value of date
         
         const dt=d.getFullYear()+'-'+Number(Number(d.getMonth())+1)+'-'+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()
-      
-      try{
-        Axios.post(url,{
-        user_id:data.user_id,
-        text_content:data.text_content,
-        image_content:data.image_content,
-        company:data.company,
-        //date_time:d.getFullYear()+'-'+d.getMonth()+1+'-'+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()
-        date_time:dt
-    }).then(res=>{
-            console.log(res.data);
-        alert("Posted Sucessfully!")
-        })
-        }
-      catch(e)
-        {
-            console.log(e)
-        }
+        
+      if(data.text_content[0].length>30)
+      {
+        try{
+            Axios.post(url,{
+            user_id:data.user_id,
+            text_content:data.text_content,
+            image_content:data.image_content,
+            company:data.company,
+            //date_time:d.getFullYear()+'-'+d.getMonth()+1+'-'+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()
+            date_time:dt
+        }).then(res=>{
+                console.log(res.data);
+            alert("Posted Sucessfully!")
+            })
+            }
+          catch(e)
+            {
+                console.log(e)
+            }
+      }
+      else{
+          alert("Insufficient description")
+      }
+
     }
     
     return (
@@ -49,7 +56,7 @@ export default function ShareForm() {
              <form  className='shareForm' >
              <div className='shareForm-control'>
                 
-                <textarea onChange={(e)=>handle(e)} placeholder='Write about your experience' id="text_content" value={data.text_content}/>
+                <textarea onChange={(e)=>handle(e)} placeholder='Write about your experience' id="text_content" value={data.text_content} required />
             </div>
             <div className='shareForm-control'>
                 {/* <label>Role</label> */}
@@ -59,7 +66,7 @@ export default function ShareForm() {
             </div>
             <div className='shareForm-control'>
                 {/*<label>Company Name</label>*/}
-                <input onChange={(e)=>handle(e)} type="text" placeholder='Company Name' id='company' value={data.company}/>
+                <input onChange={(e)=>handle(e)} type="text" placeholder='Company Name' id='company' value={data.company} required />
             </div>
 
             {/*
@@ -71,7 +78,7 @@ export default function ShareForm() {
                 />
             </div>
             */}
-            <input onClick={(e)=>submit(e)} type="submit" value='Add Post' className='btn btn-block' id='form-submit'/>
+            <input type="submit" onClick={(e)=>submit(e)} value='Add Post' className='btn btn-block' id='form-submit'/>
 
         </form>
         </div>
