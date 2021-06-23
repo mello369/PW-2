@@ -165,6 +165,7 @@ app.get('/getPosts',(req,res)=>{
 })
 
 /********************************************************************/
+/********************************************************************/
 //POST: 
 app.post("/uploadPost", (req, res) => {
 	let data = { company: req.body.company, image_content: req.body.image_content,text_content:req.body.text_content,user_id:req.body.user_id,date_time:req.body.date_time};
@@ -176,7 +177,7 @@ app.post("/uploadPost", (req, res) => {
 });
 
 //ASK QUESTION:
-app.post("/ask/ask-submit",(req,res)=>{
+app.post("/ask-submit",(req,res)=>{
     let data={question:req.body.question,user_id:req.body.user_id};
     let sql="INSERT INTO question SET ?";
     let query=db.query(sql,data,(err,result)=>{
@@ -184,13 +185,37 @@ app.post("/ask/ask-submit",(req,res)=>{
         res.send(JSON.stringify({status:200,error:null,response:"Question added successfully"}));
     })
 })
+//Get Questions:
+app.get("/get-questions",(req,res)=>{
+    let sql="Select * from question order by question_id desc";
+    let questions=[]
+    db.query(sql,async (err,result)=>{
+        if(err==null)
+        {
 
+            for(i of result)
+            {
+                questions.push(i);
+
+            }
+            //console.log(posts);
+            res.status=200;
+            res.header
+            res.send({questions});
+        
+        }
+        else
+        {
+            res.send({"msg":"failed"});
+        }
+    })
+})
 //ANSWER:
 app.post("/answer/answer-submit",(req,res)=>{
     let data={answer:req.body.answer,question_id:req.body.question_id,user_id:req.body.user_id};
     let sql="INSERT INTO answer SET ?";
     let query=db.query(sql,data,(err,result)=>{
-        if(err) throw err;
+        if(err==null) throw err;
         res.send(JSON.stringify({status:200,error:null,response:"Answer added successfully"}));
     })
 })
@@ -241,7 +266,7 @@ app.get('/profile/:id',(req,res)=>{
         }
     })
 })
-
+//____________________________________________
 //EDIT PROFILE:
 //NOTE : CANT UPDATE EMAIL HERE AS IT IS FOREIGN KEY OF USER=>FIX 
 app.post('/profile-edit/:id',(req,res)=>{
@@ -253,7 +278,7 @@ app.post('/profile-edit/:id',(req,res)=>{
         res.send(JSON.stringify({status:200,error:null,response:"Profile updated successfully"}));
     })
 })
-
+//_____________________________________________
 //DELETE POST:
 
 app.post('/delete-post/:post_id',(req,res)=>{
