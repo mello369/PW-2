@@ -1,50 +1,81 @@
 import './EditProfile.css';
-
-
+import Axios from 'axios';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { useState, useEffect,useRef } from 'react';
+import { SettingsInputAntenna } from '@material-ui/icons';
 
 function EditProfile()
 {
+    const id=8;
+    const [profileData,setProfile]=useState([]);
+    useEffect(() => {
+        const getProfile=async()=>{
+            const res=await fetch('http://localhost:3001/profile/'+id)
+            const data = await res.json()
+            setProfile(data[0])
+        }
+        getProfile();
+    },[])
+    const url="http://localhost:3001/profile-edit/"+id;
+
+
+    function handle(e){
+        const newData={...profileData};
+        newData[e.target.id]=[e.target.value];
+        setProfile(newData)
+    }
+    function submit(e)
+    {
+        e.preventDefault();
+        try{
+            Axios.post(url,{
+            name:profileData.name,
+            grad_year:profileData.grad_year,
+            branch:profileData.branch,
+            description:profileData.description,
+            company:profileData.company,
+        }).then(res=>{
+                console.log(res.data);
+            alert("Updated Sucessfully!")
+            })
+            }
+          catch(e)
+            {
+                console.log(e)
+            }
+      }
+
+
     return(
         <div className="eprofile">
             <div className="econt">
-                <h3>Edit Profile(Not completed)</h3>
+                <h3>Edit Profile</h3>
                 <form>
                 <div className="row">
-                    <label>Profile Picture: </label>
-                    <input type="file" name="profile-pic" placeholder="Upload"></input>
+                    <AccountCircleIcon id="profile-img" />
                 </div>
                 <div className="row">
-                    <input type="text" placeholder="Full Name" name="name">
+                    <input type="text" value={profileData.name} name="name" id="name" onChange={(e)=>handle(e)} placeholder="Full Name">
                     </input>
                 </div>
                 <div className="row">
-                    <input type="text" placeholder="Branch" name="branch"></input>
-                </div>
-                <div className="row">
-                    <input type="text" placeholder="Describe yourself" name="desc">
+                    <input type="text" value={profileData.grad_year} name="grad_year" id="grad_year" onChange={(e)=>handle(e)} placeholder="Graduation Year">
                     </input>
                 </div>
                 <div className="row">
-                    <input type="text" placeholder="Current Company" name="company">
+                    <input type="text" value={profileData.branch} name="branch" id="branch" onChange={(e)=>handle(e)} placeholder="Branch"></input>
+                </div>
+                <div className="row">
+                    <textarea type="text" value={profileData.description} name="description" id="description"onChange={(e)=>handle(e)} placeholder="Description">
+                    </textarea>
+                </div>
+                <div className="row">
+                    <input type="text" value={profileData.company} name="company" id="company" onChange={(e)=>handle(e)} placeholder="Company">
                     </input>
                 </div>
+                <input type='submit' onClick={(e)=>submit(e)} value="Save" id="save-button"></input>
+                
                 </form>
-            </div>
-            <hr></hr>
-            <h4>Posts</h4>
-            <div className="post-box">
-                <button id="delete">Delete Post</button>
-                <div className="post"></div>
-            </div>
-            <hr></hr>
-            <div className="post-box">
-                <button id="delete">Delete Post</button>
-                <div className="post"></div>
-            </div>
-            <hr></hr>
-            <div className="post-box">
-                <button id="delete">Delete Post</button>
-                <div className="post"></div>
             </div>
             
         </div>

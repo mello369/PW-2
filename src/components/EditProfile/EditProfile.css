@@ -10,10 +10,7 @@
     margin-bottom: 40px!important;
     padding-bottom:100px ;
 }
-.eprofile #profile-img{
-    background-color: black;
-    color: black;
-}
+
 .eprofile h3{
     text-align: center;
 }
@@ -29,7 +26,16 @@
 }
 .eprofile input{
     text-align: left;
+    border-radius: 5px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    width: 200px;
     
+}
+.eprofile textarea{
+    width: 500px;
+    height: 70px;
 }
 
 
@@ -42,3 +48,24 @@
     border-radius: 10px;
     
 }
+  
+.eprofile ::-webkit-input-placeholder {
+    text-align: left!important;
+  }
+  
+.eprofile ::-moz-placeholder {
+    text-align: left;
+  }
+  .eprofile #save-button{
+      display: block;
+      margin: auto;
+      width: 200px;
+      color: white;
+      background-color: black;
+      font-weight: bold;
+      font-size: 1.2em;
+      text-align: center;
+  }
+  .eprofile #save-button:focus{
+      background-color: teal;
+  }
