@@ -1,6 +1,6 @@
 import './SignUp.css';
 import logo from './logo-sm.png';
-const branch=['CSE','ISE','ECE','ME','BT','AE','CVL'];
+const branch=['CSE','ISE','ECE','ME','BT','AE','CVL','CE','EEE','AE','ETE','IE','MDE'];
 const branchList=branch.map((branch)=>
 <option value={branch}>{branch}</option>
 )

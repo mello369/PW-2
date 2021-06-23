@@ -245,7 +245,7 @@ app.get('/profile/:id',(req,res)=>{
 //EDIT PROFILE:
 //NOTE : CANT UPDATE EMAIL HERE AS IT IS FOREIGN KEY OF USER=>FIX 
 app.post('/profile-edit/:id',(req,res)=>{
-    const sql='Update user set name=\"'+req.body.name+"\",grad_year=\""+req.body.grad_year+"\",user.description=\""+req.body.description+"\",company=\""+req.body.company+"\" where user_id="+req.params.id;
+    const sql='Update user set name=\"'+req.body.name+"\",grad_year=\""+req.body.grad_year+"\",user.description=\""+req.body.description+"\",company=\""+req.body.company+"\",branch=\""+req.body.branch+"\" where user_id="+req.params.id;
     console.log(sql)
     let query=db.query(sql,(err,result)=>{
         if(err) throw err;

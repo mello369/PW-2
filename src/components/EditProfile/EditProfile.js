@@ -4,6 +4,12 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { useState, useEffect,useRef } from 'react';
 import { SettingsInputAntenna } from '@material-ui/icons';
 
+const branch=['CSE','ISE','ECE','ME','BT','AE','CVL','CE','EEE','AE','ETE','IE','MDE'];
+const branchList=branch.map((branch)=>
+<option value={branch}>{branch}</option>
+)
+
+
 function EditProfile()
 {
     const id=8;
@@ -24,6 +30,7 @@ function EditProfile()
         newData[e.target.id]=[e.target.value];
         setProfile(newData)
     }
+
     function submit(e)
     {
         e.preventDefault();
@@ -63,7 +70,11 @@ function EditProfile()
                     </input>
                 </div>
                 <div className="row">
-                    <input type="text" value={profileData.branch} name="branch" id="branch" onChange={(e)=>handle(e)} placeholder="Branch"></input>
+                    {/* <input type="text" value={profileData.branch} name="branch" id="branch" onChange={(e)=>handle(e)} placeholder="Branch"></input> */}
+                    <select id='branch' onChange={(e)=>handle(e)}>
+                        <option value={profileData.branch}>{profileData.branch}</option>
+                        {branchList}
+                    </select>
                 </div>
                 <div className="row">
                     <textarea type="text" value={profileData.description} name="description" id="description"onChange={(e)=>handle(e)} placeholder="Description">
