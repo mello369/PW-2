@@ -20,6 +20,7 @@ export default function AskForm() {
     {
         e.preventDefault();
         //console.log(data.question[0].length);
+        if(data.question[0]!=undefined)
         if(data.question[0].length>30)
         {
             try{
@@ -39,6 +40,9 @@ export default function AskForm() {
 
       else{
           alert("Add more details to the question")
+      }
+      else{
+        alert("No question entered")
       }
 
     }

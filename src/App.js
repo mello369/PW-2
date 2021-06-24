@@ -7,9 +7,9 @@ import EditProfile from './components/EditProfile/EditProfile';
 import SignUp from './components/SignUp/SignUp';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import QnA from './components/QnA/QnA';
-import AddPost from './components/AddPost/AddPost'
 import {Route,Link} from 'react-router-dom';
 import Home from './components/Home/Home';
+import Answers from './components/Answers/Answers'
 function App() {
   const [posts,setPosts]=useState([
     {
@@ -40,8 +40,9 @@ function App() {
     <Route exact path="/login" component={Login}/>
     <Route exact path="/signup" component={SignUp}/>
     <Route exact path="/profile" component={Profile}/>
-    <Route exact path="/addpost" component={AddPost}/>
     <Route exact path="/EditProfile" component={EditProfile}/>
+    <Route exact path="/Answers/:question_id" component={Answers}/>
+    
     </div>
   );
 }

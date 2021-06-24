@@ -24,7 +24,7 @@ export default function ShareForm() {
         const d=new Date()//to get value of date
         
         const dt=d.getFullYear()+'-'+Number(Number(d.getMonth())+1)+'-'+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()
-        
+      if(data.text_content[0]!=undefined)
       if(data.text_content[0].length>30)
       {
         try{
@@ -46,7 +46,10 @@ export default function ShareForm() {
             }
       }
       else{
-          alert("Insufficient description")
+        alert("Insufficient description")
+      }
+      else{
+        alert("Enter description")
       }
 
     }
@@ -60,7 +63,7 @@ export default function ShareForm() {
             </div>
             <div className='shareForm-control'>
                 {/* <label>Role</label> */}
-                <input onChange={(e)=>handle(e)} type="url" placeholder='Image url' id='image_content' value={data.image_content}
+                <input onChange={(e)=>handle(e)} type="url" placeholder='Thumbnail/Image url' id='image_content' value={data.image_content}
                 
                 />
             </div>

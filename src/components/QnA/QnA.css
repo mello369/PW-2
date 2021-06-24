@@ -5,6 +5,10 @@
     margin-right: 20%;
     margin-left: 20%
 }
+.questions-page .question-title{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 @media only screen and (max-width: 992px){
     .questions-page{
         margin-right: 10%;

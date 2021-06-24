@@ -4,9 +4,15 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {MoreVert} from '@material-ui/icons';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+// import { Link } from 'react-router-dom';
+// import Answers from '../Answers/Answers.js';
+import {Route,Link} from 'react-router-dom';
+
 export default function Questions({question,question_id}) {
+    // <Route exact path="/Answers" render={(props)=><Answers q_id={question_id}/>}/>
     return (
         <div className="question">
+            <Link to={`/Answers/${question_id}`}>
             <div className="questionWrapper">
             
             {/* <div className="questionTop">
@@ -50,6 +56,7 @@ export default function Questions({question,question_id}) {
             </div>
                 */}
             </div> 
+            </Link>
         </div>
     )
 }

@@ -210,12 +210,36 @@ app.get("/get-questions",(req,res)=>{
         }
     })
 })
+//Get Single Question:
+
+app.get("/getSingleQuestion/:id",(req,res)=>{
+    let sql="Select question.question from question where question_id="+req.params.id;
+     let questions=[]
+    db.query(sql,async (err,result)=>{
+        if(err==null)
+        {
+            for(i of result)
+            {
+                questions.push(i);
+            }
+            console.log(questions);
+            res.status=200;
+            res.header
+            res.send(result);
+        
+        }
+        else
+        {
+            res.send({"msg":"failed"});
+        }
+    })
+})
 //ANSWER:
-app.post("/answer/answer-submit",(req,res)=>{
+app.post("/answerSubmit",(req,res)=>{
     let data={answer:req.body.answer,question_id:req.body.question_id,user_id:req.body.user_id};
     let sql="INSERT INTO answer SET ?";
     let query=db.query(sql,data,(err,result)=>{
-        if(err==null) throw err;
+        if(err!=null) throw err;
         res.send(JSON.stringify({status:200,error:null,response:"Answer added successfully"}));
     })
 })
@@ -289,7 +313,36 @@ app.post('/delete-post/:post_id',(req,res)=>{
     })
 })
 
+///Getting answers of a question
 
+app.get('/getAnswers/:id',(req,res)=>{
+    let i=0;
+    const query = 'select * from answer where question_id='+req.params.id+' order by answer_id desc;';
+    let posts=[];
+    db.query(query,async (err,result)=>{
+        if(err==null)
+        {
+
+            for(i of result)
+            {
+                posts.push(i);
+
+            }
+            console.log(posts);
+            res.status=200;
+            res.header
+            res.send({posts});
+        
+        }
+        else
+        {
+            res.send({"msg":"failed"});
+            throw err;
+            
+        }
+        
+    })
+})
 
 
 

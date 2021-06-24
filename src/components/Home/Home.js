@@ -26,7 +26,7 @@ function Home() {
     return data
         
     }
-
+console.log(Posts)
     return (
         <>
         

@@ -25,8 +25,10 @@ function QnA(){
     return(
         <div className="questions-page">
             <ShareQ/>
+            <div className="question-title">{Questions.length} Questions</div>
             {
             Questions.map(
+              
                 (qn) =><Questionp question={qn.question} question_id={qn.question_id} />
             )
 }
