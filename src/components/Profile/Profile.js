@@ -1,4 +1,5 @@
 import './Profile.css';
+import axios from 'axios';
 import Post from '../Home/post/post';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { useState, useEffect } from 'react';
@@ -33,6 +34,23 @@ function Profile() {
         return data
     }
     console.log(profileData.name)
+
+    function deletePost(e,post)
+    {
+        e.preventDefault();
+        console.log(post.post_id)
+        const check=window.confirm("Are you sure you want to delete the post?");
+
+        const url='http://localhost:3001/delete-post/'+post.post_id;
+        console.log(url);
+        if(check)
+        {
+            axios.delete(url)
+            .then(() => console.log("Deleted!"));
+            window.location.reload(true)
+        }
+        
+    }
     return (
         <div className="profile">
             <div className="container">
@@ -63,7 +81,12 @@ function Profile() {
             <div className="post"></div> */}
                 {
                     Posts.map(
-                        (post) => <Post name={post.name} date={post.date_time} image={post.image_content} text={post.text_content} company={post.company} />
+                        
+                        (post) => 
+                        <>
+                        <button onClick={(e)=>deletePost(e,post)}>Delete</button>
+                        <Post name={post.name} date={post.date_time} image={post.image_content} text={post.text_content} company={post.company} />
+                        </>
                     )
                 }
 
