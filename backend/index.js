@@ -167,6 +167,7 @@ app.get('/getPosts',(req,res)=>{
 })
 
 /********************************************************************/
+/********************************************************************/
 //POST: 
 app.post("/uploadPost", (req, res) => {
 	let data = { company: req.body.company, image_content: req.body.image_content,text_content:req.body.text_content,user_id:req.body.user_id,date_time:req.body.date_time};
@@ -178,7 +179,7 @@ app.post("/uploadPost", (req, res) => {
 });
 
 //ASK QUESTION:
-app.post("/ask/ask-submit",(req,res)=>{
+app.post("/ask-submit",(req,res)=>{
     let data={question:req.body.question,user_id:req.body.user_id};
     let sql="INSERT INTO question SET ?";
     let query=db.query(sql,data,(err,result)=>{
@@ -186,13 +187,61 @@ app.post("/ask/ask-submit",(req,res)=>{
         res.send(JSON.stringify({status:200,error:null,response:"Question added successfully"}));
     })
 })
+//Get Questions:
+app.get("/get-questions",(req,res)=>{
+    let sql="Select * from question order by question_id desc";
+    let questions=[]
+    db.query(sql,async (err,result)=>{
+        if(err==null)
+        {
 
+            for(i of result)
+            {
+                questions.push(i);
+
+            }
+            //console.log(posts);
+            res.status=200;
+            res.header
+            res.send({questions});
+        
+        }
+        else
+        {
+            res.send({"msg":"failed"});
+        }
+    })
+})
+//Get Single Question:
+
+app.get("/getSingleQuestion/:id",(req,res)=>{
+    let sql="Select question.question from question where question_id="+req.params.id;
+     let questions=[]
+    db.query(sql,async (err,result)=>{
+        if(err==null)
+        {
+            for(i of result)
+            {
+                questions.push(i);
+            }
+            console.log(questions);
+            res.status=200;
+            res.header
+            res.send(result);
+        
+        }
+        else
+        {
+            res.send({"msg":"failed"});
+        }
+    })
+})
 //ANSWER:
-app.post("/answer/answer-submit",(req,res)=>{
+app.post("/answerSubmit",(req,res)=>{
     let data={answer:req.body.answer,question_id:req.body.question_id,user_id:req.body.user_id};
     let sql="INSERT INTO answer SET ?";
     let query=db.query(sql,data,(err,result)=>{
-        if(err) throw err;
+        if(err!=null) throw err;
         res.send(JSON.stringify({status:200,error:null,response:"Answer added successfully"}));
     })
 })
@@ -243,7 +292,7 @@ app.get('/profile/:id',(req,res)=>{
         }
     })
 })
-
+//____________________________________________
 //EDIT PROFILE:
 //NOTE : CANT UPDATE EMAIL HERE AS IT IS FOREIGN KEY OF USER=>FIX 
 app.post('/profile-edit/:id',(req,res)=>{
@@ -255,18 +304,47 @@ app.post('/profile-edit/:id',(req,res)=>{
         res.send(JSON.stringify({status:200,error:null,response:"Profile updated successfully"}));
     })
 })
-
+//_____________________________________________
 //DELETE POST:
 
-app.post('/delete-post/:post_id',(req,res)=>{
-    const sql="delete from post where post_id="+req.params.post_id;
+app.delete('/delete-post/:id',(req,res)=>{
+    const sql="delete from post where post_id="+req.params.id;
     let query=db.query(sql,(err,result)=>{
         if(err) throw err;
         res.send(JSON.stringify({status:200,error:null,response:"Post deleted successfully"}));
     })
 })
 
+///Getting answers of a question
 
+app.get('/getAnswers/:id',(req,res)=>{
+    let i=0;
+    const query = 'select * from answer where question_id='+req.params.id+' order by answer_id desc;';
+    let posts=[];
+    db.query(query,async (err,result)=>{
+        if(err==null)
+        {
+
+            for(i of result)
+            {
+                posts.push(i);
+
+            }
+            console.log(posts);
+            res.status=200;
+            res.header
+            res.send({posts});
+        
+        }
+        else
+        {
+            res.send({"msg":"failed"});
+            throw err;
+            
+        }
+        
+    })
+})
 
 
 
