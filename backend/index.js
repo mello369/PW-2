@@ -46,7 +46,9 @@ app.post('/login',(req,res)=>{
     db.query(query,[email,password],(err,result)=>{
         if(err==null)
         {
+            res.status=200
             res.send({"msg":"success","user_id":result[0]["user_id"]});
+            
         
         }
         else
@@ -98,7 +100,7 @@ app.get('/getUser/:id',(req,res)=>{
     db.query(query1,[id],(err,result)=>{
         if(err==null&&result.length!=0)
         {
-            res.send(result[0]["name"]);
+            res.send(result[0]);
         }
         else
         {
@@ -133,7 +135,7 @@ app.get('/getPosts',(req,res)=>{
             {
                await axios.get('http://localhost:3001/getUser/'+i["user_id"])
                 .then(response => {
-                             i["name"]=response.data;
+                             i["name"]=response.data["name"];
                              posts.push(i);
                              console.log(response.data)
                              })

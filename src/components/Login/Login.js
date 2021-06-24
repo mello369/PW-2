@@ -1,9 +1,39 @@
 import './Login.css';
 import logo from './logo-sm.png'
+import {useState,useEffect} from 'react';
+import Axios from 'axios';
 function Login(){
+
+    const [userId,setUserId] = useState(null);
+    const [email,setEmail] =useState('');
+    const [password,setPassword]=useState('')
+    const onSubmit = async (e) =>
+    {
+        e.preventDefault();
+        console.log("request")
+
+        try{
+            Axios.post('http://localhost:3001/login',{
+            email:email,
+            password:password
+        }).then(res=>{
+                console.log(res.data);
+                setUserId(res.data.user_id)
+            })
+        }
+        
+        catch(e)
+        {
+            console.log(e)
+        }
+
+
+        
+    }
+
 return(
     
-    <div className="Main-Container">
+ <div className="Main-Container">
         <div className="row-form">
             <div className="form-container">
                 <div className='cntr'>
@@ -12,16 +42,22 @@ return(
                 <h4>Sign In</h4>
                 <hr></hr>
                 <div className='cntr'>
-                <input type='text' placeholder='  Email' ></input>
+                <input type='text'  placeholder='  Email'
+                value = {email} onChange={(e) =>
+                    setEmail(e.currentTarget.value)
+                    }></input>
                 </div>
                 <div className="cntr">
-                <input type='password' placeholder='  Password'></input>
+                <input type='password' placeholder='  Password'
+                value = {password} onChange={(e) =>
+                    setPassword(e.currentTarget.value)//set the value of text to whatever is typed 
+                    }></input>
                 </div>
                 <div className="cntr">
                 <span>Forgot Password?</span>
                 </div>
                 <div className="cntr">
-                <button  id="login">Login</button>
+                <button  id="login" onClick = {onSubmit}>Login</button>
                 </div>
                 <div className="cntr">
                 <a href="/signup"><button  id="signup" href="/signup">SignUp</button></a>

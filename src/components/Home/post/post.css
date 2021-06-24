@@ -71,6 +71,9 @@
     align-items: center;
 }
 
+.postLike{
+    cursor: pointer;
+}
 
 .postLikeCounter{
     font-size: 15px;

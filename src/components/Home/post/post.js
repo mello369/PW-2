@@ -4,7 +4,14 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {MoreVert} from '@material-ui/icons';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import {useState,useEffect} from 'react';
 export default function Post({name,date,image,text,company}) {
+   
+   const [liked,setLiked] = useState(false)
+   const onToggleLike = ()=>
+   {
+       setLiked(!liked)
+   }
     return (
         <div className="post">
             <div className="postWrapper">
@@ -36,7 +43,7 @@ export default function Post({name,date,image,text,company}) {
             </div>
             <div className="postBottom">
             <div className="postBottomLeft">
-            <FavoriteIcon  className="postLike"/>
+            <FavoriteIcon onClick={()=>{onToggleLike()}} style={{ color: liked ? 'indianred' : 'black' }} className="postLike"/>
             {/* <ChatBubbleIcon className="postComment"/> */}
             <span className="postLikeCounter">10</span>
             </div>
