@@ -59,6 +59,17 @@ app.post('/login',(req,res)=>{
     })
 })
 
+app.get('/getReactions/:id',(req,res)=>{
+    const post_id = req.params.id
+    const query = "select * from post_reaction where post_id = (?) "
+    db.query(query,[post_id],(err,result)=>{
+        if(err===null)
+        {
+            res.send({"msg":"successful","reactions":result})
+        }
+    })
+})
+
 app.post('/signup',(req,res)=>{
     const email = req.body.email
     let flag = true
@@ -149,12 +160,48 @@ app.get('/getUser/:id',(req,res)=>{
 
 })
 
+app.post('/addLike',(req,res)=>{
+    const user_id = req.body.user_id
+    const post_id = req.body.post_id
+    const upvote = 1
+    const query = 'insert into post_reaction(post_id,user_id,upvote) values(?,?,?)'
+    db.query(query,[post_id,user_id,upvote],(err,result)=>{
+        if(err===null)
+        {
+            res.send({"msg":"successful"})
+        }
+        else
+        {
+            res.send({"msg":"failed"})
+        }
+    })
+})
+
+app.post('/removeLike',(req,res)=>{
+    const user_id = req.body.user_id
+    const post_id = req.body.post_id
+    const upvote = 1
+    const query = 'delete from post_reaction where user_id = (?) and post_id=(?) and upvote = (?)'
+    db.query(query,[user_id,post_id,upvote],(err,result)=>{
+        if(err===null)
+        {
+            res.send({"msg":"successful"})
+        }
+        else
+        {
+            console.log(err)
+            res.send({"msg":"failed"})
+        }
+    })
+})
+
+
 app.get('/getPosts',(req,res)=>{
     let i=0;
     const query = 'select * from post order by date_time desc';
     let posts=[];
     db.query(query,[],async (err,result)=>{
-        if(err==null)
+        if(err===null)
         {
             
         //   await result.map(element => {

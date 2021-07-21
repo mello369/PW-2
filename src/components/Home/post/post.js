@@ -5,12 +5,101 @@ import {MoreVert} from '@material-ui/icons';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import {useState,useEffect} from 'react';
-export default function Post({name,date,image,text,company}) {
+import Axios from 'axios';
+export default function Post({id,name,date,image,text,company}) {
    
-   const [liked,setLiked] = useState(false)
+    const [liked,setLiked] = useState(false)
+    const [reactions,setReactions] = useState([])
+    const [likeCounter,setLikeCounter]=useState(0)
+   
+    useEffect(async()=>{//Will be called as soon as the page renders.
+       
+       async function getReactions()
+        {
+        
+        fetchReactions()
+    }
+    getReactions()
+      },[]) 
+   const fetchReactions = async ()=>
+   {
+       
+    await Axios.get("http://localhost:3001/getReactions/"+id).then((response)=>{
+    var i=0    
+        console.log(response.data.reactions)
+        if(response.data.msg==="successful")
+        {
+            setReactions(response.data.reactions)
+            console.log(reactions)
+            
+            for (i of response.data.reactions)
+            {
+                
+                
+                console.log(i)
+                if(i["upvote"]==1)
+                {
+                    setLikeCounter(likeCounter+1)
+                    if(i["user_id"]==localStorage.getItem('userId'))
+                    {
+                        setLiked(true)
+                    }
+                }
+            }
+        }
+        else
+        {
+            alert("Error")
+        }
+    })
+   }
    const onToggleLike = ()=>
    {
-       setLiked(!liked)
+       
+       const formdata = new FormData()
+       /*formdata.append("user_id",localStorage.getItem('userId'))
+       formdata.append("post_id",id)
+       console.log(formdata)*/
+       if(!liked)
+       {
+        Axios.post("http://localhost:3001/addLike",{
+            user_id:localStorage.getItem('userId'),
+            post_id:id
+        }).then((response)=>
+        {
+            console.log(response)
+            if(response.data.msg==="successful")
+            {
+                setLiked(!liked)
+                setLikeCounter(likeCounter+1)
+            }
+            else
+            {
+                alert("failed")
+            }
+
+        });
+    }
+    else
+    {   
+    Axios.post("http://localhost:3001/removeLike",{
+        user_id:localStorage.getItem('userId'),
+        post_id:id
+    }).then((response)=>
+        {
+            console.log(response)
+            if(response.data.msg==="successful")
+            {
+                setLiked(!liked)
+                setLikeCounter(likeCounter-1)
+            }
+            else
+            {
+                alert("failed")
+            }
+        });
+        
+    }
    }
     return (
         <div className="post">
@@ -45,7 +134,7 @@ export default function Post({name,date,image,text,company}) {
             <div className="postBottomLeft">
             <FavoriteIcon onClick={()=>{onToggleLike()}} style={{ color: liked ? 'indianred' : 'black' }} className="postLike"/>
             {/* <ChatBubbleIcon className="postComment"/> */}
-            <span className="postLikeCounter">10</span>
+            <span className="postLikeCounter">{likeCounter}</span>
             </div>
             <div className="postBottomRight">
                 <span className="postCommentText">9 comments</span>
