@@ -1,12 +1,26 @@
 import './Login.css';
 import logo from './logo-sm.png'
-import {useState,useEffect} from 'react';
+import React,{useState,useEffect,useContext} from 'react';
 import Axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import {GlobalContext} from '../../Store';
 function Login(){
-
-    const [userId,setUserId] = useState(null);
+    const history = useHistory();
+    const [userId,setUserId] = useContext(GlobalContext);
     const [email,setEmail] =useState('');
     const [password,setPassword]=useState('')
+
+    useEffect(async ()=>{//Will be called as soon as the page renders.
+
+        let user_id = localStorage.getItem('userId')
+        if(user_id!=null)
+        {
+          history.push("/");
+        }
+        
+        
+      },[])
+
     const onSubmit = async (e) =>
     {
         e.preventDefault();
@@ -16,12 +30,18 @@ function Login(){
             Axios.post('http://localhost:3001/login',{
             email:email,
             password:password
-        }).then(res=>{
+        }).then(async res=> {
                 console.log(res.data);
+                if(res.data.msg==="success")
+                {
+                
                 setUserId(res.data.user_id)
+                localStorage.setItem('userId',res.data.user_id);
+                history.push("/");
+                }
             })
         }
-        
+
         catch(e)
         {
             console.log(e)

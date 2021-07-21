@@ -4,10 +4,17 @@ import ShareQ from './Ask/Ask';//share
 import Questionp from './Questions/Questions'//post
 import {useState,useEffect} from 'react';
 import './QnA.css';
+import { useHistory } from 'react-router-dom';
 
 function QnA(){
     const [Questions,setQuestions] = useState([]);
+    const history = useHistory();
     useEffect(()=>{//Will be called as soon as the page renders.
+      let user_id = localStorage.getItem('userId')
+      if(user_id==null)
+      {
+        history.push("/login");
+      }
         const getQuestions = async () => {
           const QuestionsfromServer = await fetchQuestions()
           console.log(QuestionsfromServer)

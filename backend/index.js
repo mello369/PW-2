@@ -53,40 +53,78 @@ app.post('/login',(req,res)=>{
         }
         else
         {
-            res.send({"msg":"failed"});
+            throw err
         }
         
     })
 })
 
 app.post('/signup',(req,res)=>{
-    const email = req.body.email;
-    const password = req.body.password;
-    const name = req.body.name;
-    
-    const query1 = "insert into login values (?,?);";
-    const query2 = "insert into user(name,email) values (?,?);";
-    db.query(query1,[email,password],(err,result)=>{
-    
-        if(err!=null)
+    const email = req.body.email
+    let flag = true
+    const password = req.body.password
+    const name = req.body.name
+    const branch = req.body.branch
+    const grad_year = req.body.grad_year
+    const query = "select * from login where email=(?)"
+    const query1 = "insert into login values (?,?);"
+    const query2 = "insert into user(name,email,branch,grad_year) values (?,?,?,?);"
+    const query3 = "select user_id from login l,user u where(l.email=(?) and password=(?) and l.email=u.email)";
+    db.query(query,[email],(err,result)=>{
+        if(result.length>0)
         {
-            res.send('Could not add record');
-        }
-
-    })
-    db.query(query2,[name,email],(err,result)=>{
-        if(err==null)
-        {
-            res.send('Record added succesfully');
+            res.send({"msg":"uses already exists!"});
+            
         }
         else
         {
-            console.log(err);
-            res.send('could not add record');
-            const query = "delete from login where email like (?)";
-            db.query(query,[email]);
+            db.query(query1,[email,password], (err,result)=>{ 
+                if(err!=null)
+                {
+                    console.log(err)
+                    res.send({"msg":"failed"});
+                    flag = false
+                    
+                }
+                else
+                {
+                    db.query(query2,[name,email,branch,grad_year],(err,result)=>{
+                        if(err!=null)
+                        {
+                            flag=false
+                            
+                            console.log(err);
+                            res.send({"msg":"failed"});
+                            
+                            const query = "delete from login where email like (?)";
+                            db.query(query,[email]);
+                        }
+                        else
+                        {
+                            db.query(query3,[email,password],(err,result)=>{
+                                if(err==null)
+                                {
+                                    res.status=200
+                        
+                                    
+                                    res.send({"msg":"success","user_id":result[0]["user_id"]});
+                                }
+                                else
+                                {
+                                    console.log('select error')
+                                    res.send({"msg":"failed"});
+                                }
+                                
+                            })
+                        }
+                    })
+                }
+            })
         }
-    })
+    });
+
+ 
+
 })
 /*
 app.post('./uploadPost',(req,res)=>{

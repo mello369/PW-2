@@ -1,15 +1,23 @@
-import React from 'react';
+import React,{ useContext } from 'react';
 import axios from 'axios';
 import './Home.css';
 import Share from './share/share'
 import Post from './post/post';
 import {useState,useEffect} from 'react';
 import NavigavtionBar from '../NavBar/NavBar';
+import Store from '../../Store';
+import { GlobalContext } from '../../Store'
+import { useHistory } from 'react-router-dom';
 function Home() {
-
+  const history = useHistory();
     const [Posts,setPosts] = useState([]);
-    
-    useEffect(()=>{//Will be called as soon as the page renders.
+    const [userId,setUserId] = useContext(GlobalContext);
+    useEffect(async()=>{//Will be called as soon as the page renders.
+        let user_id = localStorage.getItem('userId');
+        if(user_id==null)
+        {
+          history.push("/login");
+        }
         const getPosts = async () => {
           const PostsfromServer = await fetchPosts()
           console.log(PostsfromServer)
@@ -49,7 +57,7 @@ console.log(Posts)
    
             
         </div>
-    </>
+    </>  
     )
 }
 

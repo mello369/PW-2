@@ -11,6 +11,12 @@
     margin-bottom: 15px;
     
 }
+
+.shareForm-control-image{
+    display: flex;
+    align-items: center;
+}
+
 .shareForm-control textarea{
     height: 100px;
     display: block;

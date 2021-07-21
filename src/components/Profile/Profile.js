@@ -3,13 +3,20 @@ import axios from 'axios';
 import Post from '../Home/post/post';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 function Profile() {
-    const id=8;
+    const id=localStorage.getItem('userId');
     const [Posts, setPosts] = useState([]);
     const [profileData,setProfile]=useState([]);
-
+    const history = useHistory();
     useEffect(() => {//Will be called as soon as the page renders.
-
+        let user_id = localStorage.getItem('userId')
+        if(user_id==null)
+        {
+          history.push("/login");
+        }
         const getPosts = async () => {
             const PostsfromServer = await fetchPosts()
             setPosts(PostsfromServer["posts"])
@@ -54,7 +61,7 @@ function Profile() {
     return (
         <div className="profile">
             <div className="container">
-                <a href="/EditProfile"><button id="edit-button">Edit</button></a>
+                <a href="/EditProfile"><EditIcon id="edit-button"/></a>
                 <h3>Profile</h3>
 
                 <div className="profile-data">
@@ -84,7 +91,8 @@ function Profile() {
                         
                         (post) => 
                         <>
-                        <button onClick={(e)=>deletePost(e,post)}>Delete</button>
+
+                        <DeleteIcon className = "deletebutton" onClick={(e)=>deletePost(e,post)}/>
                         <Post name={post.name} date={post.date_time} image={post.image_content} text={post.text_content} company={post.company} />
                         </>
                     )

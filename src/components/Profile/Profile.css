@@ -28,14 +28,9 @@
 #edit-button{
     position: relative;
     float: right;
-    width:100px;
-    background-color: teal;
-    color:white;
-    border-radius: 5px;
+
 }
-#edit-button:hover{
-    background-color: black;
-}
+
 #profile-img{
     width: 100px;
     height: 100px;
@@ -83,6 +78,10 @@
 .profile button:hover{
     color: white;
     background-color: rgb(95, 33, 33);
+}
+.deletebutton {
+    float: right;
+    cursor: pointer;
 }
 @media screen and (max-width: 992px)
 {

@@ -10,12 +10,14 @@ import QnA from './components/QnA/QnA';
 import {Route,Link} from 'react-router-dom';
 import Home from './components/Home/Home';
 import Answers from './components/Answers/Answers'
+import Store from './Store';
 
 
 function App() {
   
 
   return (
+    <Store>
     <div className="app">
     <NavBar/> 
     <Route exact path="/" component={Home}/>
@@ -27,6 +29,7 @@ function App() {
     <Route exact path="/Answers/:question_id" component={Answers}/>
     
     </div>
+    </Store>
   );
 }
 

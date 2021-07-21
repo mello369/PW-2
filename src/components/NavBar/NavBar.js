@@ -4,6 +4,10 @@ import {Nav,Button,Navbar,Container} from 'react-bootstrap';
 import logo from './logo.jpg';
 
 import {Link} from 'react-router-dom';
+function logout()
+{
+  localStorage.removeItem('userId')
+}
 function NavigavtionBar()
 {
 
@@ -22,7 +26,7 @@ function NavigavtionBar()
       {/* <Nav.Link href="/ask"className='buttons'>Ask</Nav.Link> */}
      {/* <Nav.Link href="/addpost"className='buttons'>Add Post</Nav.Link>*/}
     <Nav.Link href="/profile"className='buttons'>Profile</Nav.Link>
-    <Nav.Link href="/login"className='buttons'>Logout</Nav.Link>
+    <Nav.Link href="/login" onClick={logout} className='buttons'>Logout</Nav.Link>
     </Nav>
   </Navbar.Collapse>
   </Container>
