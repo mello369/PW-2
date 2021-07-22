@@ -19,10 +19,10 @@ export default function AShare({question_id}) {
             <div className="ashareWrapper">
             <div className="ashareTop">
                  <img className = "ashareProfileImg" src="/assets/image1.jpg" alt=""/> 
-                <input 
+                {/* <input 
                 placeholder="Add Answer"
-                type="text" className = "ashareInput" />
-                
+                type="text" className = "ashareInput" /> */}
+                <h6 className="ashareInput">Add Answer</h6>
             </div>
             <hr className="ashareHr"/>
             <div className="ashareBottom">
