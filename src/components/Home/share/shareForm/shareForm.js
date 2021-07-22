@@ -3,8 +3,10 @@ import './shareForm.css'
 import Axios from 'axios';
 import {useState,useEffect} from 'react';
 import PublishIcon from '@material-ui/icons/Publish';
+import { useHistory } from 'react-router-dom';
 export default function ShareForm() {
 //
+    const history = useHistory();
     const [imageSelected,setImageSelected]=useState(null)
     const [imgUrl,setImgUrl]=useState('')
     const url="http://localhost:3001/uploadPost";
@@ -54,7 +56,8 @@ export default function ShareForm() {
                 //date_time:d.getFullYear()+'-'+d.getMonth()+1+'-'+d.getDate()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()
                 date_time:dt
             }).then(res=>{
-                alert(response.data.url)
+                alert("uploaded succesfully")
+                history.push("/login");
                 })
         });
             

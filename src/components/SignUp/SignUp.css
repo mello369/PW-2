@@ -152,7 +152,10 @@ background-color:teal;
 
 }
 
-
+.error{
+    font-size: small;
+    color: crimson;
+}
 
 
 @media only screen and (max-width: 992px)

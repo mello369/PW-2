@@ -251,6 +251,25 @@ app.get('/getPosts',(req,res)=>{
     })
 })
 
+app.get("/checkEmail/:email",(req,res)=>{
+    const email = req.params.email
+    const query = 'select email from login where email = (?)'
+    db.query(query,[email],(err,result)=>{
+        if(err==null)
+        {
+            if(result.length>0)
+            res.send({"msg":"exists"})
+            else
+            res.send({"msg":"does not exist"})
+        }
+        else
+        {
+            console.log(err)
+            res.send({"msg":"error"})
+        }
+    })
+})
+
 /********************************************************************/
 /********************************************************************/
 //POST: 
