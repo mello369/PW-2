@@ -25,7 +25,9 @@ function NavigavtionBar()
       <Nav.Link href="/QnA"className='buttons'>QnA</Nav.Link>
       {/* <Nav.Link href="/ask"className='buttons'>Ask</Nav.Link> */}
      {/* <Nav.Link href="/addpost"className='buttons'>Add Post</Nav.Link>*/}
-    <Nav.Link href="/profile"className='buttons'>Profile</Nav.Link>
+    <Nav.Link href="/profile"className='buttons' onClick={()=>{
+      localStorage.setItem('profile_id',localStorage.getItem('userId'))
+    }}>Profile</Nav.Link>
     <Nav.Link href="/login" onClick={logout} className='buttons'>Logout</Nav.Link>
     </Nav>
   </Navbar.Collapse>

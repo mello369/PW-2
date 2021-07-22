@@ -6,7 +6,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import {useState,useEffect} from 'react';
 import Axios from 'axios';
-export default function Post({id,name,date,image,text,company}) {
+export default function Post({id,name,date,image,text,company,user_id}) {
    
     const [liked,setLiked] = useState(false)
     const [reactions,setReactions] = useState([])
@@ -39,7 +39,9 @@ export default function Post({id,name,date,image,text,company}) {
                 console.log(i)
                 if(i["upvote"]==1)
                 {
-                    setLikeCounter(likeCounter+1)
+                    setLikeCounter((likeCounter)=>{
+                        return likeCounter+1
+                    })
                     if(i["user_id"]==localStorage.getItem('userId'))
                     {
                         setLiked(true)
@@ -104,19 +106,22 @@ export default function Post({id,name,date,image,text,company}) {
     return (
         <div className="post">
             <div className="postWrapper">
-            
+            <a href='/profile' onClick={()=>{
+                localStorage.setItem('profile_id',user_id)
+            }}>
             <div className="postTop">
                 <div className="postTopLeft">
                 <AccountCircleIcon style={{fontSize:50}}className="postProfileImage"/>
                 <span className="postUsername">{name}</span>
                 <span className="postDate">{date}</span>
                 </div>
-                <div className="postTopRight">
+                {/* <div className="postTopRight">
 
                     <MoreVert/>
 
-                </div>
+                </div> */}
             </div>
+            </a>
 
             <div className="postCenter">
                 <img src={image} 
@@ -136,9 +141,9 @@ export default function Post({id,name,date,image,text,company}) {
             {/* <ChatBubbleIcon className="postComment"/> */}
             <span className="postLikeCounter">{likeCounter}</span>
             </div>
-            <div className="postBottomRight">
+            {/* <div className="postBottomRight">
                 <span className="postCommentText">9 comments</span>
-            </div>
+            </div> */}
 
 
             </div>

@@ -7,7 +7,8 @@ import { useHistory } from 'react-router-dom';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 function Profile() {
-    const id=localStorage.getItem('userId');
+    const id=localStorage.getItem('profile_id');
+    //const profileId=localStorage.getItem('profile_id');
     const [Posts, setPosts] = useState([]);
     const [profileData,setProfile]=useState([]);
     const history = useHistory();
@@ -61,7 +62,7 @@ function Profile() {
     return (
         <div className="profile">
             <div className="container">
-                <a href="/EditProfile"><EditIcon id="edit-button"/></a>
+                {(localStorage.getItem('profile_id')==localStorage.getItem('userId'))?<a href="/EditProfile"><EditIcon id="edit-button"/></a>:<></>}
                 <h3>Profile</h3>
 
                 <div className="profile-data">
@@ -82,7 +83,7 @@ function Profile() {
                     </div>
                 </div>
                 <hr className="left"></hr>
-                <h4>Posts Added By Me</h4>
+                <h4>Posts</h4>
                 {/* <div className="post"></div>
             <div className="post"></div>
             <div className="post"></div> */}
@@ -91,8 +92,8 @@ function Profile() {
                         
                         (post) => 
                         <>
-
-                        <DeleteIcon className = "deletebutton" onClick={(e)=>deletePost(e,post)}/>
+                         {(localStorage.getItem('profile_id')==localStorage.getItem('userId'))?<DeleteIcon className = "deletebutton" onClick={(e)=>deletePost(e,post)}/>:<></>}
+                        
                         <Post name={post.name} date={post.date_time} image={post.image_content} text={post.text_content} company={post.company} />
                         </>
                     )

@@ -81,7 +81,7 @@ console.log(Posts)
 
           {  
           Posts.map(
-                (post) =><Post id ={post.post_id} name={post.name} date={post.date_time} image = {post.image_content} text ={post.text_content} company={post.company} />
+                (post) =><Post id ={post.post_id} name={post.name} date={post.date_time} image = {post.image_content} text ={post.text_content} company={post.company} user_id={post.user_id} />
             )
             
             }
