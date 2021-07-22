@@ -6,7 +6,7 @@ import {useState,useEffect} from 'react';
 export default function ShareForm({question_id}) {
 //
     // const { question_id } = useParams();
-    const id=8;
+    const id=localStorage.getItem('userId');
     const url="http://localhost:3001/answerSubmit";
     const [data,setData]=useState({
       user_id:id,

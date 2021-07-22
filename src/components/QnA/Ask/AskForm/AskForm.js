@@ -4,7 +4,7 @@ import Axios from 'axios';
 import {useState,useEffect} from 'react';
 export default function AskForm() {
 //
-    const id=8;
+    const id=localStorage.getItem('userId');
     const url="http://localhost:3001/ask-submit";
     const [data,setData]=useState({
       user_id:id,

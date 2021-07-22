@@ -4,9 +4,17 @@
     height: 100%!important;
     box-shadow: 0 0 0 0 rgb(0,0,0,0);
     margin: auto!important;
-    
-    
+   padding-left: 15%;
 }
+/* .nav-container{
+    flex-direction: row;
+    display: flex;
+    background-color: black;
+    
+    margin: auto;
+    margin-left: 15%;
+    
+} */
 .NavBarMain{
     background-color: black;
     margin: auto;
@@ -16,7 +24,7 @@
     position: fixed!important;
     top: 0px!important;
     z-index: 1;
-
+    
    
 }
 .NavBarMain .navbar{
@@ -26,11 +34,15 @@
     width: 300px;
     margin-top: 5px;
     margin-bottom: 5px;
+    
 }
 .NavBarMain .navbar-nav{
     
    /* margin-right: 0;*/
-   width: 100%;
+   width: 50%;
+  
+   padding-left: 5%;
+  
 }
 .NavBarMain .buttons
 {
@@ -61,6 +73,7 @@
         width:96%;
         margin-left: 2%;
         margin-right: 2%;
+        padding-left: 0;
     }
     .NavBarMain button{
         margin-right: 10px!important;
@@ -69,6 +82,9 @@
 @media screen and (max-width:360px){
     .NavBarMain img{
         width: 150px;
+    }
+    .NavBarMain .container{
+        padding-left: 0;
     }
     .NavBarMain button{
         width: 25px!important;

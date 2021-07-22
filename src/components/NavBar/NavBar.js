@@ -31,6 +31,7 @@ function NavigavtionBar()
     <Nav.Link href="/login" onClick={logout} className='buttons'>Logout</Nav.Link>
     </Nav>
   </Navbar.Collapse>
+  
   </Container>
 </Navbar>
 )
