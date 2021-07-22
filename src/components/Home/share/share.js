@@ -20,9 +20,10 @@ export default function Share() {
             <div className="shareWrapper">
             <div className="shareTop">
                  <img className = "shareProfileImg" src="/assets/image1.jpg" alt=""/> 
-                <input 
+                {/* <input 
                 placeholder="Add Post"
-                type="text" className = "shareInput" />
+                type="text" className = "shareInput" /> */}
+                <h6 className="shareInput">Add Post</h6>
                 
             </div>
             <hr className="shareHr"/>

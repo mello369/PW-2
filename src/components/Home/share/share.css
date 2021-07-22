@@ -21,6 +21,7 @@
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
+    
 
 }
 
@@ -28,6 +29,7 @@
 {
     border: none;
     width: 80%;
+    text-align: center;
 }
 .shareInput:focus{
     outline: none;
