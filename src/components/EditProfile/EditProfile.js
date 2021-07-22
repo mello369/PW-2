@@ -3,6 +3,7 @@ import Axios from 'axios';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { useState, useEffect,useRef } from 'react';
 import { SettingsInputAntenna } from '@material-ui/icons';
+import { useHistory } from 'react-router-dom';
 
 const branch=['CSE','ISE','ECE','ME','BT','AE','CVL','CE','EEE','AE','ETE','IE','MDE'];
 const branchList=branch.map((branch)=>
@@ -12,6 +13,7 @@ const branchList=branch.map((branch)=>
 
 function EditProfile()
 {
+    const history=useHistory
     const id=localStorage.getItem('userId');
     const [profileData,setProfile]=useState([]);
     useEffect(() => {
@@ -44,6 +46,7 @@ function EditProfile()
         }).then(res=>{
                 console.log(res.data);
             alert("Updated Sucessfully!")
+            history.push("/profile")
             })
             }
           catch(e)

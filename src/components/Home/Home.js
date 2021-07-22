@@ -69,7 +69,7 @@ console.log(Posts)
                 <label htmlFor='branch'></label>
                 <select name='branch' id='branch' value = {branch} onChange={(e) =>
                     setBranch(e.currentTarget.value)} required>
-                    <option value={selectedBranch}>{selectedBranch}</option>
+                    <option value={(selectedBranch!=null)?selectedBranch:'ALL'}>{selectedBranch}</option>
                     {branchList}
                     
                 </select>
