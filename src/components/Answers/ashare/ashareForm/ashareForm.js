@@ -37,6 +37,7 @@ export default function ShareForm({question_id}) {
         }).then(res=>{
                 console.log(res.data);
             alert("Answered Sucessfully!")
+            window.location.reload();
             })
             }
           catch(e)

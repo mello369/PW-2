@@ -30,6 +30,7 @@ export default function AskForm() {
             }).then(res=>{
                     console.log(res.data);
                 alert("Posted Question Sucessfully!")
+                window.location.reload();
                 })
                 }
               catch(e)

@@ -50,7 +50,7 @@ function Home() {
     function applyFilter()
     {
       localStorage.setItem('branch',branch)
-      history.push('/login')
+      window.location.reload();
       console.log("APPLY")
       
     }
