@@ -16,8 +16,8 @@ const branchList=branchl.map((branch)=>
 )
 
 function Home() {
-  const [branch,setBranch]=useState('')
-  const history = useHistory();
+    const [branch,setBranch]=useState('')
+    const history = useHistory();
     const [Posts,setPosts] = useState([]);
     const[selectedBranch,setSelect]=useState('');
     const [userId,setUserId] = useContext(GlobalContext);
@@ -41,7 +41,8 @@ function Home() {
 
       const fetchPosts = async() =>{
         var branchName=localStorage.getItem('branch')
-        if(branchName==undefined)branchName='ALL'
+        if(branchName==='')branchName='ALL'
+        console.log(branchName)
         const res = await fetch('http://localhost:3001/getPosts/'+branchName)
     const data = await res.json()
     return data
@@ -49,7 +50,7 @@ function Home() {
     }
     function applyFilter()
     {
-      localStorage.setItem('branch',branch)
+      localStorage.setItem('branch',(branch!=='')?branch:'ALL')
       window.location.reload();
       
       
@@ -69,7 +70,7 @@ console.log(Posts)
                 <label htmlFor='branch'></label>
                 <select name='branch' id='branch' value = {branch} onChange={(e) =>
                     setBranch(e.currentTarget.value)} required>
-                    <option value={(selectedBranch!==undefined)?selectedBranch:'ALL'}>{(selectedBranch!=undefined)?selectedBranch:'ALL'}</option>
+                    <option value={(selectedBranch!=='')?selectedBranch:'ALL'}>{(selectedBranch!=='')?selectedBranch:'ALL'}</option>
                     {branchList}
                     
                 </select>
