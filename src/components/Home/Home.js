@@ -8,12 +8,22 @@ import NavigavtionBar from '../NavBar/NavBar';
 import Store from '../../Store';
 import { GlobalContext } from '../../Store'
 import { useHistory } from 'react-router-dom';
+import FilterListIcon from '@material-ui/icons/FilterList';
+
+const branchl=['ALL','CSE','ISE','ECE','ME','BT','AE','CVL','CE','EEE','AE','ETE','IE','MDE'];
+const branchList=branchl.map((branch)=>
+<option value={branch}>{branch}</option>
+)
+
 function Home() {
+  const [branch,setBranch]=useState('')
   const history = useHistory();
     const [Posts,setPosts] = useState([]);
+    const[selectedBranch,setSelect]=useState('');
     const [userId,setUserId] = useContext(GlobalContext);
     useEffect(async()=>{//Will be called as soon as the page renders.
         let user_id = localStorage.getItem('userId');
+
         if(user_id==null)
         {
           history.push("/login");
@@ -24,15 +34,25 @@ function Home() {
           setPosts(PostsfromServer["posts"])
           
         }
+        setSelect(localStorage.getItem('branch'))
          getPosts();
         
       },[])
 
       const fetchPosts = async() =>{
-        const res = await fetch('http://localhost:3001/getPosts')
+        var branchName=localStorage.getItem('branch')
+        if(branchName=='')branchName='ALL'
+        const res = await fetch('http://localhost:3001/getPosts/'+branchName)
     const data = await res.json()
     return data
         
+    }
+    function applyFilter()
+    {
+      localStorage.setItem('branch',branch)
+      history.push('/login')
+      console.log("APPLY")
+      
     }
 console.log(Posts)
     return (
@@ -42,6 +62,23 @@ console.log(Posts)
             
 
             <Share />
+            <div className="filter-row">
+   
+            
+            <div className="filter">
+                <label htmlFor='branch'></label>
+                <select name='branch' id='branch' value = {branch} onChange={(e) =>
+                    setBranch(e.currentTarget.value)} required>
+                    <option value={selectedBranch}>{selectedBranch}</option>
+                    {branchList}
+                    
+                </select>
+            </div>
+            <div className="filter">
+            <FilterListIcon onClick={applyFilter}/>
+            </div>
+            </div>
+
           {  
           Posts.map(
                 (post) =><Post id ={post.post_id} name={post.name} date={post.date_time} image = {post.image_content} text ={post.text_content} company={post.company} />

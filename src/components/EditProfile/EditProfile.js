@@ -12,7 +12,7 @@ const branchList=branch.map((branch)=>
 
 function EditProfile()
 {
-    const id=8;
+    const id=localStorage.getItem('userId');
     const [profileData,setProfile]=useState([]);
     useEffect(() => {
         const getProfile=async()=>{

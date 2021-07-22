@@ -196,9 +196,13 @@ app.post('/removeLike',(req,res)=>{
 })
 
 
-app.get('/getPosts',(req,res)=>{
+app.get('/getPosts/:branch',(req,res)=>{
     let i=0;
-    const query = 'select * from post order by date_time desc';
+    var query = 'select * from post order by date_time desc';
+    if(req.params.branch!='ALL')
+    {
+        query='select * from post where user_id in (select user_id from user where branch=\''+req.params.branch+'\') order by date_time desc';
+    }
     let posts=[];
     db.query(query,[],async (err,result)=>{
         if(err===null)
