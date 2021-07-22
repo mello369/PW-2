@@ -41,7 +41,7 @@ function Home() {
 
       const fetchPosts = async() =>{
         var branchName=localStorage.getItem('branch')
-        if(branchName=='')branchName='ALL'
+        if(branchName==undefined)branchName='ALL'
         const res = await fetch('http://localhost:3001/getPosts/'+branchName)
     const data = await res.json()
     return data
@@ -51,7 +51,7 @@ function Home() {
     {
       localStorage.setItem('branch',branch)
       window.location.reload();
-      console.log("APPLY")
+      
       
     }
 console.log(Posts)
@@ -69,7 +69,7 @@ console.log(Posts)
                 <label htmlFor='branch'></label>
                 <select name='branch' id='branch' value = {branch} onChange={(e) =>
                     setBranch(e.currentTarget.value)} required>
-                    <option value={(selectedBranch!=null)?selectedBranch:'ALL'}>{selectedBranch}</option>
+                    <option value={(selectedBranch!==undefined)?selectedBranch:'ALL'}>{(selectedBranch!=undefined)?selectedBranch:'ALL'}</option>
                     {branchList}
                     
                 </select>
