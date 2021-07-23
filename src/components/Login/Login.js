@@ -25,13 +25,13 @@ function Login(){
     {
         e.preventDefault();
         console.log("request")
-
+        
         try{
             Axios.post('http://localhost:3001/login',{
             email:email,
             password:password
         }).then(async res=> {
-                console.log(res.data);
+                console.log(res.data.msg);
                 if(res.data.msg==="success")
                 {
                 
@@ -39,14 +39,21 @@ function Login(){
                 localStorage.setItem('userId',res.data.user_id);
                 history.push("/");
                 }
+                else
+                {
+                    alert("Wrong email or password")
+                }
             })
         }
-
         catch(e)
         {
+            
             console.log(e)
+            
         }
-
+        
+        
+        
 
         
     }

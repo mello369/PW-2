@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const axios = require('axios');
-var CryptoJS = require("crypto-js");
+//for hashing password
+const crypto = require('crypto');
+const hashkey="safnamkrinea567";
 app.use(express.json());
 ////
 var cors = require('cors')
@@ -42,21 +44,29 @@ app.get('/',(req,res)=>{
 })
 app.post('/login',(req,res)=>{
     const email = req.body.email;
-    const password = req.body.password;
-    //const password = (CryptoJS.AES.encrypt(req.body.password, 'safnamkrish').toString()).substring(0,24);
+    const password = (crypto.createHmac('sha256',hashkey).update(req.body.password).digest('hex')).substring(0,24);
+    //let password = (CryptoJS.AES.encrypt(req.body.password, 'safnamkrish').toString()).substring(0,24);
+    console.log(password)
     const query = "select user_id from login l,user u where(l.email=(?) and password=(?) and l.email=u.email)";
     db.query(query,[email,password],(err,result)=>{
-        if(err==null)
-        {
-            res.status=200
-            res.send({"msg":"success","user_id":result[0]["user_id"]});
+        try{
+            if(err==null)
+            {
+                res.status=200
+                res.send({"msg":"success","user_id":result[0]["user_id"]});
+                
             
-        
+            }
+            else
+            {
+                throw err
+            }
         }
-        else
+        catch(e)
         {
-            throw err
+            console.log("wrong")
         }
+
         
     })
 })
@@ -75,8 +85,10 @@ app.get('/getReactions/:id',(req,res)=>{
 app.post('/signup',(req,res)=>{
     const email = req.body.email
     let flag = true
-    const password = req.body.password
-    //const password = (CryptoJS.AES.encrypt(req.body.password, 'safnamkrish').toString()).substring(0,24);
+    //const password = req.body.password
+    const password = (crypto.createHmac('sha256',hashkey).update(req.body.password).digest('hex')).substring(0,24);
+   // let password = (CryptoJS.AES.encrypt(req.body.password, 'safnamkrish').toString()).substring(0,24);
+    console.log(password)
     const name = req.body.name
     const branch = req.body.branch
     const grad_year = req.body.grad_year
