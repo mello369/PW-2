@@ -7,6 +7,7 @@
     margin-right: 25%;
     margin-left: 20%;
     margin-bottom: 20px;
+    padding-bottom: 20px!important;
   }
   
 .filter-row
@@ -21,4 +22,8 @@
   margin-bottom: 0px;
   cursor: pointer;
 }
-  
+.home h6{
+  text-align: center;
+  margin: auto;
+  color: gray;
+}
