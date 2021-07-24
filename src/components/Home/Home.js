@@ -22,8 +22,15 @@ function Home() {
     const[selectedBranch,setSelect]=useState('');
     const [userId,setUserId] = useContext(GlobalContext);
     useEffect(async()=>{//Will be called as soon as the page renders.
+        //fixing filter
+        if(localStorage.getItem('branch'))
+        {
+          
+        }
+        else{
+          localStorage.setItem('branch','ALL')
+        }
         let user_id = localStorage.getItem('userId');
-
         if(user_id==null)
         {
           history.push("/login");
